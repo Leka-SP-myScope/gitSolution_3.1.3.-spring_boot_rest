@@ -35,36 +35,37 @@ public class UserRestController {
     }
 
     @GetMapping("/user")
-    public String getAllUsersForUser(Model model) {
+    public List<User> getAllUsersForUser() {
         allUsers = userService.getAllUser().stream()
                 .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
-        model.addAttribute("allUser", allUsers);
-        return "user_page";
+        return allUsers.stream().map(userConverter::fromUserDtoToUser).collect(Collectors.toList());
     }
 
     @GetMapping("/users")
-    public List<User> getAllUsersForAdmin(Model model) {
+    public List<User> getAllUsersForAdmin() {
         allUsers = userService.getAllUser().stream()
                 .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
-        model.addAttribute("allUser", allUsers);
-        model.addAttribute("listRoles", roleRepository.findAll());
-        model.addAttribute("user", new UserDto());
         return allUsers.stream().map(userConverter::fromUserDtoToUser).collect(Collectors.toList());
     }
 
     @PostMapping("/users")
-    public String createUser(@ModelAttribute("user") UserDto userDto,
-                             @RequestParam("rolesNameList") List<String> rolesNameList) {
+    public User createUser(@RequestBody UserDto userDto) {
         User user = userConverter.fromUserDtoToUser(userDto);
-        user.setRoles(userService.getRolesFromList(rolesNameList));
         userService.saveUser(user);
-        return "redirect:/admin/users";
+        return user;
     }
 
-    @DeleteMapping("/users")
-    public String deleteUser(@RequestParam("id") Long id) {
+    @PutMapping("/users")
+    public User updateUser(@RequestBody UserDto userDto) {
+        User user = userConverter.fromUserDtoToUser(userDto);
+        userService.saveUser(user);
+        return user;
+    }
+
+    @DeleteMapping("/users/{id}")
+    public String deleteUser(@PathVariable Long id) {
         userService.deleteById(id);
-        return "redirect:/admin/users";
+        return "User with ID = " + id + " was deleted";
     }
 
 //--------------------------The_begining_code---------------------------------------------------------------------------

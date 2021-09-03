@@ -37,14 +37,14 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-//    @GetMapping("/login")
-//    public String getLogin(@RequestParam(value = "error", required = false) String error,
-//                           @RequestParam(value = "logout", required = false) String logout,
-//                           Model model) {
-//        model.addAttribute("error", error != null);
-//        model.addAttribute("logout", logout != null);
-//        return "login";
-//    }
+    @GetMapping("/login")
+    public String getLogin(@RequestParam(value = "error", required = false) String error,
+                           @RequestParam(value = "logout", required = false) String logout,
+                           Model model) {
+        model.addAttribute("error", error != null);
+        model.addAttribute("logout", logout != null);
+        return "login";
+    }
 
     @GetMapping("/user")
     public String getAllUsersForUser(Model model) {
@@ -60,7 +60,8 @@ public class UserController {
 //        allUsers = userRepository.findAll().stream()
 //                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
         model.addAttribute("allUser", allUsers);
-        return "user_page";
+        //return "user_page";
+        return "user_pageForUpdated";
     }
 
     @GetMapping("/admin/users")
