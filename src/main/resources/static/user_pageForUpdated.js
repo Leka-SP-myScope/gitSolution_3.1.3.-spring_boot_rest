@@ -19,15 +19,30 @@ async function loadUsersInTable(url, table) {
     tableBody.innerHTML = "";
 
 //    Populate the bodies
-    data.forEach((row) => {
-        const rowElement = document.createElement('tr');
-        const cellElement = document.createElement('td');
-        cellElement.textContent = row.id + row.name + row.surname + row.age + row.email;
+    let temp = "";
+    data.forEach((x) => {
+        //const rowElement = document.createElement('tr');
+        //const cellElement = document.createElement('td');
+        //cellElement.textContent = row.id + row.name + row.surname + row.age + row.email;
+        // cellElement.textContent = row.id + row.name + row.surname + row.age + row.email;
+        // cellElement.textContent = cellElement + row.name;
+        // cellElement.textContent = cellElement + row.surname;
+        // cellElement.textContent = cellElement + row.age;
+        // cellElement.textContent = cellElement + row.email;
+
+        temp += "<tr>";
+        temp += "<td class=\"border-left-0\">" + x.id + "</td>";
+        temp += "<td>" + x.name + "</td>";
+        temp += "<td>" + x.surname + "</td>";
+        temp += "<td>" + x.age + "</td>";
+        temp += "<td>" + x.email + "</td>";
+        temp += "<td class=\"border-left-0\">" + x.id + "</td></tr>";
+
         // cellElement.textContent = row.name;
         // cellElement.textContent = row.surname;
         // cellElement.textContent = row.age;
         // cellElement.textContent = row.email;
-        rowElement.appendChild(cellElement);
+        //rowElement.appendChild(cellElement);
 
         // row.forEach((cellText) => {
         //     const cellElement = document.createElement('td');
@@ -35,8 +50,10 @@ async function loadUsersInTable(url, table) {
         //     rowElement.appendChild(cellElement);
         //
         // });
-        tableBody.appendChild(rowElement);
+        //tableBody.appendChild(rowElement);
     });
+    document.getElementById('bodyUsers').innerText = temp;
+
 
 
 
