@@ -61,7 +61,8 @@ public class UserController {
 //                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
         model.addAttribute("allUser", allUsers);
         //return "user_page";
-        return "user_pageForUpdated";
+        //return "user_pageForUpdated";
+        return "user_pageEmpty";
     }
 
     @GetMapping("/admin/users")
