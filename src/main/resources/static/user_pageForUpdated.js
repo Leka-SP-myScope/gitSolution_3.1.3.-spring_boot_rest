@@ -3,12 +3,14 @@
 //test1.insertAdjacentText("About new USER");
 
 document.addEventListener('DOMContentLoaded', () => {
+    //loadUsersInTable("http://localhost:8080/api/user", document.querySelector('#tableUsers'));
     loadUsersInTable("http://localhost:8080/api/user", document.querySelector('#tableUsers'));
     alert("DOM loaded!");
 
 });
 
 async function loadUsersInTable(url, table) {
+    //const tableBody = table.querySelector('#bodyUsers');
     const tableBody = table.querySelector('#bodyUsers');
     const response = await fetch(url);
     const data = await response.json();
@@ -17,15 +19,34 @@ async function loadUsersInTable(url, table) {
     tableBody.innerHTML = "";
 
 //    Populate the bodies
-    for(const row of data) {
-        const rowElement = document.createElement('<tr>');
-        for (const cellText of row) {
-            const cellElement = document.createElement('<td>');
+    data.forEach((row) => {
+        const rowElement = document.createElement('tr');
+        row.forEach((cellText) => {
+            const cellElement = document.createElement('td');
             cellElement.textContent = cellText;
             rowElement.appendChild(cellElement);
-        }
+
+        });
         tableBody.appendChild(rowElement);
-    }
+    });
+
+
+
+    // for(const row of data) {
+    //     const rowElement = document.createElement('tr');
+    //     row.forEach((cellText) => {
+    //         const cellElement = document.createElement('td');
+    //         cellElement.textContent = cellText;
+    //         rowElement.appendChild(cellElement);
+    //
+    //     });
+    //     // for (const cellText of row) {
+    //     //     const cellElement = document.createElement('td');
+    //     //     cellElement.textContent = cellText;
+    //     //     rowElement.appendChild(cellElement);
+    //     // }
+    //     tableBody.appendChild(rowElement);
+    // }
 
     // data.forEach((x) => {
     //     const rowElement = document.createElement('<tr>');
