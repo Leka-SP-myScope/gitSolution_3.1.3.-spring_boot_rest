@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     //loadUsersInTable("http://localhost:8080/api/user", document.querySelector('#tableUsers'));
-    loadUsersInTable("http://localhost:8080/api/user", document.querySelector('#tableUsers'));
+    //loadUsersInTable("http://localhost:8080/api/user", document.querySelector('#tableUsers'));
     alert("DOM loaded!");
 
 });
@@ -21,12 +21,20 @@ async function loadUsersInTable(url, table) {
 //    Populate the bodies
     data.forEach((row) => {
         const rowElement = document.createElement('tr');
-        row.forEach((cellText) => {
-            const cellElement = document.createElement('td');
-            cellElement.textContent = cellText;
-            rowElement.appendChild(cellElement);
+        const cellElement = document.createElement('td');
+        cellElement.textContent = row.id + row.name + row.surname + row.age + row.email;
+        // cellElement.textContent = row.name;
+        // cellElement.textContent = row.surname;
+        // cellElement.textContent = row.age;
+        // cellElement.textContent = row.email;
+        rowElement.appendChild(cellElement);
 
-        });
+        // row.forEach((cellText) => {
+        //     const cellElement = document.createElement('td');
+        //     cellElement.textContent = cellText;
+        //     rowElement.appendChild(cellElement);
+        //
+        // });
         tableBody.appendChild(rowElement);
     });
 
