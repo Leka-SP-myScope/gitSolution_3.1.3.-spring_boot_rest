@@ -35,32 +35,9 @@
                                 <td class="inner-table" style="border-left: 0;border-right: 0;border-bottom: 0;">
                                     <div class="table-responsive">
                                         <table id="tableUsers" class="table table-striped">
-                                            <thead class="text-center">
-                                            <tr>
-                                                <th class="border-left-0">ID</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Age</th>
-                                                <th>Email</th>
-                                                <th class="border-right-0">Role</th>
-                                            </tr>
+                                            <thead id="headUsers" class="text-center">
                                             </thead>
                                             <tbody id="bodyUsers" class="text-center">
-<!--                                                <tr>-->
-<!--                                                    <td></td>-->
-<!--                                                </tr>-->
-<!--                                            <tr th:each="user : ${allUser}">-->
-<!--                                                <td class="border-left-0" th:text="${user.id}"></td>-->
-<!--                                                <td th:text="${user.name}"></td>-->
-<!--                                                <td th:text="${user.surname}"></td>-->
-<!--                                                <td th:text="${user.age}"></td>-->
-<!--                                                <td th:text="${user.email}"></td>-->
-<!--                                                <td class="border-right-0">-->
-<!--                                                    <span th:each="role, iStat : ${user.roles}"-->
-<!--                                                          th:text="!${iStat.last}?${#strings.substring(role.role,5)}+' ':${#strings.substring(role.role,5)}">-->
-<!--                                                    </span>-->
-<!--                                                </td>-->
-<!--                                            </tr>-->
                                             </tbody>
                                         </table>
                                     </div>
@@ -77,17 +54,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
 <script src="user_pageForUpdated.js"></script>
-<!--    <script>-->
-<!--        fetch("http://localhost:8080/api/user")-->
-<!--        .then(response => {-->
-<!--            response.json().then(-->
-<!--                data => {-->
-<!--                    console.log(data);-->
-<!--        })-->
-
-<!--        })-->
-<!--    </script>-->
-
 </body>
 
 </html>
