@@ -36,16 +36,20 @@ public class UserRestController {
 
     @GetMapping("/user")
     public List<User> getAllUsersForUser() {
-        allUsers = userService.getAllUser().stream()
-                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
-        return allUsers.stream().map(userConverter::fromUserDtoToUser).collect(Collectors.toList());
+        return userService.getAllUser();
+
+//        allUsers = userService.getAllUser().stream()
+//                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
+//        return allUsers.stream().map(userConverter::fromUserDtoToUser).collect(Collectors.toList());
     }
 
     @GetMapping("/users")
     public List<User> getAllUsersForAdmin() {
-        allUsers = userService.getAllUser().stream()
-                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
-        return allUsers.stream().map(userConverter::fromUserDtoToUser).collect(Collectors.toList());
+        return userService.getAllUser();
+
+//        allUsers = userService.getAllUser().stream()
+//                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
+//        return allUsers.stream().map(userConverter::fromUserDtoToUser).collect(Collectors.toList());
     }
 
     @PostMapping("/users")

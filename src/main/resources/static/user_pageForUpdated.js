@@ -7,37 +7,68 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadUsersInTable(url, table) {
     const tableBody = table.querySelector('#bodyUsers');
     const tableHead = table.querySelector('#headUsers');
-    const response = await fetch(url);
-    const data = await response.json();
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
 
-    //Create tableHead
-    let head = "";
-    head += "<tr>";
-    head += "<th class='border-left-0'>ID</th>";
-    head += "<th>First Name</th>";
-    head += "<th>LastName</th>";
-    head += "<th>Age</th>";
-    head += "<th>Email</th>";
-    head += "<th class='border-right-0'>Role</th>";
-    head += "</tr>";
+        //Create tableHead
+        let head = "";
+        head += "<tr>";
+        head += "<th class='border-left-0'>ID</th>";
+        head += "<th>First Name</th>";
+        head += "<th>LastName</th>";
+        head += "<th>Age</th>";
+        head += "<th>Email</th>";
+        head += "<th class='border-right-0'>Role</th>";
+        head += "</tr>";
 
-    document.getElementById("headUsers").innerHTML = head;
+        document.getElementById("headUsers").innerHTML = head;
 
 //    Clear the table
-    tableBody.innerHTML = "";
+        tableBody.innerHTML = "";
 
 //    Populate the body of table
-    let row = "";
-    data.forEach((user) => {
-        row += "<tr>";
-        row += "<td class='border-left-0'>" + user.id + "</td>";
-        row += "<td>" + user.name + "</td>";
-        row += "<td>" + user.surname + "</td>";
-        row += "<td>" + user.age + "</td>";
-        row += "<td>" + user.email + "</td>";
-        row += "<td class='border-right-0'>" + user.id + "</td></tr>";
-    });
-    document.getElementById('bodyUsers').innerHTML = row;
+        let row = "";
+
+
+        console.log(data);
+        for (let user of data) {
+            console.log(user.role);
+            row += "<tr>";
+            row += "<td class='border-left-0'>" + user.id + "</td>";
+            row += "<td>" + user.name + "</td>";
+            row += "<td>" + user.surname + "</td>";
+            row += "<td>" + user.age + "</td>";
+            row += "<td>" + user.email + "</td>";
+            row += "<td class='border-right-0'>" + user + "</td></tr>";
+
+
+            //console.log(user[roles][1]);
+            //console.log(user[1]);
+            //console.log(user[0].rolesNameList);
+            //console.log(user.rolesNameList.role);
+        }
+        //console.log(data);
+        // data.forEach((user) => {
+        //     console.log(user);
+        //     row += "<tr>";
+        //     row += "<td class='border-left-0'>" + user.id + "</td>";
+        //     row += "<td>" + user.name + "</td>";
+        //     row += "<td>" + user.surname + "</td>";
+        //     row += "<td>" + user.age + "</td>";
+        //     row += "<td>" + user.email + "</td>";
+        //
+        //     row += "<td class='border-right-0'>" + user + "</td></tr>";
+        //     //console.log(user[roles][1]);
+        //     //console.log(user[1]);
+        //     //console.log(user[0].rolesNameList);
+        //     //console.log(user.rolesNameList.role);
+        // });
+        document.getElementById('bodyUsers').innerHTML = row;
+    } catch (e) {
+        console.log(e);
     }
+}
 
 loadUsersInTable("http://localhost:8080/api/user", document.querySelector('#tableUsers'));

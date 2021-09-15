@@ -15,7 +15,7 @@ public class UserDto {
     private int age;
     private String email;
     private Set<Role> roles;
-    private List<String> rolesNameList = new ArrayList<>();
+    //private List<String> rolesNameList = new ArrayList<>();
 
     public UserDto() {
     }
@@ -28,7 +28,7 @@ public class UserDto {
         this.age = age;
         this.email = email;
         this.roles = roles;
-        this.rolesNameList = rolesNameList;
+        //this.rolesNameList = rolesNameList;
     }
 
     public Long getId() {
@@ -87,13 +87,13 @@ public class UserDto {
         this.roles = roles;
     }
 
-    public List<String> getRolesNameList() {
-        return rolesNameList;
-    }
-
-    public void setRolesNameList(List<String> rolesNameList) {
-        this.rolesNameList = rolesNameList;
-    }
+//    public List<String> getRolesNameList() {
+//        return rolesNameList;
+//    }
+//
+//    public void setRolesNameList(List<String> rolesNameList) {
+//        this.rolesNameList = rolesNameList;
+//    }
 
     @Override
     public String toString() {
@@ -105,7 +105,7 @@ public class UserDto {
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 ", roles=" + roles +
-                ", rolesNameList='" + rolesNameList + '\'' +
+                ", rolesNameList='" + //rolesNameList + '\'' +
                 '}';
     }
 }
