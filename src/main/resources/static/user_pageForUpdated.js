@@ -35,56 +35,53 @@ async function loadUsersInTable(url, table) {
         console.log(data[2].roles[0].role);
         console.log(data[2].roles[0].role);
 
-        // for (i in data) {
-        //     role = data.roles[i];
-        //     console.log(role);
+        //Working loop-1
+        // for (let i = 0; i < data.length; i++) {
+        //     row += "<tr>";
+        //     row += "<td class='border-left-0'>" + data[i].id + "</td>";
+        //     row += "<td>" + data[i].name + "</td>";
+        //     row += "<td>" + data[i].surname + "</td>";
+        //     row += "<td>" + data[i].age + "</td>";
+        //     row += "<td>" + data[i].email + "</td>";
+        //     row += "<td class='border-right-0'>" + data[i].roles[0].role.substring(5) + "</td></tr>";
         // }
 
-        for (let i = 0; i < data.length; i++) {
-            //console.log(data.roles.role);
-            row += "<tr>";
-            row += "<td class='border-left-0'>" + data[i].id + "</td>";
-            row += "<td>" + data[i].name + "</td>";
-            row += "<td>" + data[i].surname + "</td>";
-            row += "<td>" + data[i].age + "</td>";
-            row += "<td>" + data[i].email + "</td>";
-            row += "<td class='border-right-0'>" + data[i].roles[0].role + "</td></tr>";
-        }
-
+        //Working loop-2
         // for (let user of data) {
-        //     //console.log(data.roles.role);
         //     row += "<tr>";
         //     row += "<td class='border-left-0'>" + user.id + "</td>";
         //     row += "<td>" + user.name + "</td>";
         //     row += "<td>" + user.surname + "</td>";
         //     row += "<td>" + user.age + "</td>";
         //     row += "<td>" + user.email + "</td>";
-        //     row += "<td class='border-right-0'>" + user + "</td></tr>";
-        //
-        //
-        //
-        //
-        //     //console.log(user[roles][1]);
-        //     //console.log(user[1]);
-        //     //console.log(user[0].rolesNameList);
-        //     //console.log(user.rolesNameList.role);
+        //     row += "<td class='border-right-0'>" + user.roles[0].role.substring(5) + "</td></tr>";
         // }
-        //console.log(data);
+
+        //Working loop-3
         // data.forEach((user) => {
-        //     console.log(user);
         //     row += "<tr>";
         //     row += "<td class='border-left-0'>" + user.id + "</td>";
         //     row += "<td>" + user.name + "</td>";
         //     row += "<td>" + user.surname + "</td>";
         //     row += "<td>" + user.age + "</td>";
         //     row += "<td>" + user.email + "</td>";
-        //
-        //     row += "<td class='border-right-0'>" + user + "</td></tr>";
-        //     //console.log(user[roles][1]);
-        //     //console.log(user[1]);
-        //     //console.log(user[0].rolesNameList);
-        //     //console.log(user.rolesNameList.role);
+        //     row += "<td class='border-right-0'>" + user.roles[0].role.substring(5) + "</td></tr>";
         // });
+
+        //Working loop-4
+        data.forEach((user) => {
+            row += "<tr>";
+            row += "<td class='border-left-0'>" + user.id + "</td>";
+            row += "<td>" + user.name + "</td>";
+            row += "<td>" + user.surname + "</td>";
+            row += "<td>" + user.age + "</td>";
+            row += "<td>" + user.email + "</td>";
+            row += "<td class='border-right-0'>";
+            user.roles.forEach((role) => {
+                row += "<span>" + role.role.substring(5) + " " + "</span>";
+            });
+            row += "</td></tr>";
+        });
         document.getElementById('bodyUsers').innerHTML = row;
     } catch (e) {
         console.log(e);
