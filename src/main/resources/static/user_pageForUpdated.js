@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
-    //loadUsersInTable("http://localhost:8080/api/user", document.querySelector('#tableUsers'));
-    //loadUsersInTable("http://localhost:8080/api/user", document.querySelector('#tableUsers'));
-    //alert("DOM loaded!");
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//     //loadUsersInTable("http://localhost:8080/api/user", document.querySelector('#tableUsers'));
+//     //loadUsersInTable("http://localhost:8080/api/user", document.querySelector('#tableUsers'));
+//     //alert("DOM loaded!");
+// });
 
 async function loadUsersInTable(url, table) {
     const tableBody = table.querySelector('#bodyUsers');
