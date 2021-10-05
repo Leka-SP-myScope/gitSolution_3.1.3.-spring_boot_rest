@@ -7,17 +7,28 @@ async function getCurrentUser(url) {
 
         dataUser.forEach((user) => {
             console.log(user.email);
+            //console.log(user.roles[user].role);
         });
-    }catch (e) {
+    } catch (e) {
         console.log(e);
     }
 }
 
 async function loadHeader(url, header) {
     const currentUser = getCurrentUser(url);
-    console.log(currentUser);
+    let userEmail = currentUser.email;
+    console.log(userEmail);
+
+    let userRole = currentUser.roles[0].role;
+    console.log(userRole);
+
+    //const currentUser = await fetch("http://localhost:8080/api/currentUser");
+    //const user = await currentUser.json();
+    //console.log(currentUser.email);
+    //console.log(currentUser.role);
+
     //let user = JSON.parse(currentUser);
-    console.log(JSON.parse(currentUser));
+    //console.log(JSON.parse(currentUser));
     //alert(currentUser);
 
     // currentUser.forEach((user) => {
