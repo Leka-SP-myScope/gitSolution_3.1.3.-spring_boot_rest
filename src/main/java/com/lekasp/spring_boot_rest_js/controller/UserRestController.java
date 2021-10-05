@@ -7,9 +7,12 @@ import com.lekasp.spring_boot_rest_js.repository.UserRepository;
 import com.lekasp.spring_boot_rest_js.service.UserConverter;
 import com.lekasp.spring_boot_rest_js.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +44,11 @@ public class UserRestController {
 //        allUsers = userService.getAllUser().stream()
 //                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
 //        return allUsers.stream().map(userConverter::fromUserDtoToUser).collect(Collectors.toList());
+    }
+
+    @GetMapping("/currentUser")
+    public String getCurrentUser(Principal principal) {
+        return principal.getName();
     }
 
     @GetMapping("/users")
