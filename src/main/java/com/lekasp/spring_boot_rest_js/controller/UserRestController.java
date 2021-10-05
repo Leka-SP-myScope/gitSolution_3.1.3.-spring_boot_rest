@@ -47,8 +47,9 @@ public class UserRestController {
     }
 
     @GetMapping("/currentUser")
-    public String getCurrentUser(Principal principal) {
-        return principal.getName();
+    public String getCurrentUser(Authentication authentication) {
+
+        return String.valueOf(authentication.getPrincipal());
     }
 
     @GetMapping("/users")

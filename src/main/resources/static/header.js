@@ -1,7 +1,13 @@
 async function getCurrentUser(url) {
     try {
         const response = await fetch(url);
-        const dataUser = response.text();
+        const dataUser = await response.json();
+
+        console.log(dataUser);
+
+        dataUser.forEach((user) => {
+            console.log(user.email);
+        });
     }catch (e) {
         console.log(e);
     }
@@ -10,9 +16,18 @@ async function getCurrentUser(url) {
 async function loadHeader(url, header) {
     const currentUser = getCurrentUser(url);
     console.log(currentUser);
+    //let user = JSON.parse(currentUser);
+    console.log(JSON.parse(currentUser));
+    //alert(currentUser);
+
+    // currentUser.forEach((user) => {
+    //     console.log(user.email);
+    // });
+
+
     try {
         const response = await fetch(url);
-        const data = response.json();
+        const data = await response.json();
 
         let head = "";
         head += "<nav class='navbar navbar-light navbar-expand-md navigation-clean'>";
