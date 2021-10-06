@@ -1,26 +1,55 @@
-async function getCurrentUser(url) {
-    try {
-        const response = await fetch(url);
-        const dataUser = await response.json();
+// async function getCurrentUser(url) {
+//     try {
+//         const response = await fetch(url);
+//         const dataUser = await response.json();
+//
+//         console.log(dataUser);
+//
+//         dataUser.forEach((user) => {
+//             console.log(user.email);
+//             //console.log(user.roles[user].role);
+//         });
+//     } catch (e) {
+//         console.log(e);
+//     }
+// }
 
-        console.log(dataUser);
 
-        dataUser.forEach((user) => {
-            console.log(user.email);
-            //console.log(user.roles[user].role);
-        });
-    } catch (e) {
-        console.log(e);
+let currentUser = "";
+
+async function getCurrentUser(urlUser) {
+    let response = await fetch(urlUser);
+    if (response.ok) {
+        currentUser = await response.json();
+        console.log("CurrentUser: = " + currentUser);
+    } else {
+        alert("HTTP error:" + response.status);
     }
+
+    console.log(currentUser);
 }
 
+console.log(currentUser);
+getCurrentUser("http://localhost:8080/api/currentUser");
+
 async function loadHeader(url, header) {
-    const currentUser = getCurrentUser(url);
+    //let currentUser = getCurrentUser(url);
+    // let response = await fetch("http://localhost:8080/api/currentUser");
+    // if (response.ok) {
+    //     let currentUser = await response.json();
+    // } else {
+    //     alert("HTTP error:" + response.status);
+    // }
+    //
+    // console.log(currentUser);
+
+
+
     let userEmail = currentUser.email;
     console.log(userEmail);
 
-    let userRole = currentUser.roles[0].role;
-    console.log(userRole);
+    //let userRole = currentUser.roles[0].role;
+    //console.log(userRole);
 
     //const currentUser = await fetch("http://localhost:8080/api/currentUser");
     //const user = await currentUser.json();
@@ -58,6 +87,6 @@ async function loadHeader(url, header) {
     }
 }
 
-getCurrentUser("http://localhost:8080/api/currentUser");
+//getCurrentUser("http://localhost:8080/api/currentUser");
 loadHeader("http://localhost:8080/api/user", document.querySelector('#header'));
 
