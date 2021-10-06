@@ -22,6 +22,7 @@ async function getCurrentUser(urlUser) {
     if (response.ok) {
         currentUser = await response.json();
         console.log("CurrentUser: = " + currentUser);
+        return currentUser;
     } else {
         alert("HTTP error:" + response.status);
     }
@@ -29,7 +30,8 @@ async function getCurrentUser(urlUser) {
     console.log(currentUser);
 }
 
-console.log(currentUser);
+console.log(currentUser.toString());
+console.log(typeof currentUser);
 getCurrentUser("http://localhost:8080/api/currentUser");
 
 async function loadHeader(url, header) {
@@ -41,11 +43,11 @@ async function loadHeader(url, header) {
     //     alert("HTTP error:" + response.status);
     // }
     //
-    // console.log(currentUser);
+    console.log(currentUser);
 
 
 
-    let userEmail = currentUser.email;
+    let userEmail = typeof currentUser;
     console.log(userEmail);
 
     //let userRole = currentUser.roles[0].role;
@@ -74,7 +76,7 @@ async function loadHeader(url, header) {
         head += "<div class='container-fluid'>";
         head += "<div class='container my-nav-container1'>";
         //head += "<b><label class='text-lowercase text-center text-light' id='email-nav' th:text='${#authentication.getPrincipal().getEmail()}'>admin@mail.ru</label></b>";
-        head += "<b><label class='text-lowercase text-center text-light' id='email-nav' th:text='${#authentication.getPrincipal().getEmail()}'></label></b>";
+        head += "<b><label class='text-lowercase text-center text-light' id='email-nav'>" +  currentUser.email + "</label></b>";
         head += "<label class='text-center' id='text'>with roles:</label>";
         head += "<label class='text-uppercase text-left' id='role-nav' text='${#authentication.getPrincipal().getUsername()}'>admin</label></div>";
         head += "<button data-toggle='collapse' class='navbar-toggler' data-target=''#navcol-1'><span class='sr-only'>Toggle navigation</span><span class='navbar-toggler-icon'></span></button>";
