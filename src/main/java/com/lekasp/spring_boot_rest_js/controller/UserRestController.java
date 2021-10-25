@@ -46,15 +46,8 @@ public class UserRestController {
 //        return allUsers.stream().map(userConverter::fromUserDtoToUser).collect(Collectors.toList());
     }
 
-//    @GetMapping("/currentUser")
-//    public String getCurrentUser(Authentication authentication) {
-//
-//        return String.valueOf(authentication.getPrincipal());
-//    }
-
     @GetMapping("/currentUser")
     public User getCurrentUser(Authentication authentication) {
-
         return (User) authentication.getPrincipal();
     }
 

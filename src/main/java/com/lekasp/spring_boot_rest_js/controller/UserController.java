@@ -46,28 +46,9 @@ public class UserController {
         return "login";
     }
 
-//    @GetMapping("/user")
-//    public String getAllUsersForUser(Model model) {
-////        allUsers = userRepository.findAllUsers().stream()
-////                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
-//
-////        allUsers = userRepository.findAll().stream()
-////                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
-//
-//        allUsers = userService.getAllUser().stream()
-//                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
-//
-////        allUsers = userRepository.findAll().stream()
-////                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
-//        model.addAttribute("allUser", allUsers);
-//        //return "user_page";
-//        //return "user_pageForUpdated";
-//        return "user_pageEmpty";
-//    }
-
     @GetMapping("/user")
     public String getAllUsersForUser() {
-        return "user_pageEmpty";
+        return "user_page";
     }
 
     @GetMapping("/admin/users")
@@ -75,18 +56,18 @@ public class UserController {
 //        allUsers = userRepository.findAllUsers().stream()
 //                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
 
-        allUsers = userService.getAllUser().stream()
-                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
-
-//        allUsers = userRepository.findAll().stream()
+//        allUsers = userService.getAllUser().stream()
 //                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
-
-
-//        allUsers = userRepository.findAll().stream()
-//                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
-        model.addAttribute("allUser", allUsers);
-        model.addAttribute("listRoles", roleRepository.findAll());
-        model.addAttribute("user", new UserDto());
+//
+////        allUsers = userRepository.findAll().stream()
+////                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
+//
+//
+////        allUsers = userRepository.findAll().stream()
+////                .map(userConverter::fromUserToUserDto).collect(Collectors.toList());
+//        model.addAttribute("allUser", allUsers);
+//        model.addAttribute("listRoles", roleRepository.findAll());
+//        model.addAttribute("user", new UserDto());
         return "admin_page";
     }
 
