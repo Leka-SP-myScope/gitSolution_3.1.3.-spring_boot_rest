@@ -234,29 +234,10 @@
                             <tr>
                                 <td id="myUserTableCell" class="inner-table">
                                     <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead class="text-center">
-                                            <tr>
-                                                <th class="border-left-0">ID</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Age</th>
-                                                <th>Email</th>
-                                                <th class="border-right-0">Role</th>
-                                            </tr>
+                                        <table id="aboutUser" class="table table-striped">
+                                            <thead id="headAboutUser" class="text-center">
                                             </thead>
-                                            <tbody class="text-center">
-<!--                                            <tr th:each="user : ${allUser}">-->
-<!--                                                <td class="border-left-0" th:text="${user.id}">Cell 1</td>-->
-<!--                                                <td th:text="${user.name}">Cell 2</td>-->
-<!--                                                <td th:text="${user.surname}">Cell 3</td>-->
-<!--                                                <td th:text="${user.age}">Cell 4</td>-->
-<!--                                                <td th:text="${user.email}">Cell 5</td>-->
-<!--                                                <td class="border-right-0">-->
-<!--                                                    <span th:each="role, iStat : ${user.roles}"-->
-<!--                                                          th:text="!${iStat.last}?${#strings.substring(role.role,5)}+' ':${#strings.substring(role.role,5)}"></span>-->
-<!--                                                </td>-->
-<!--                                            </tr>-->
+                                            <tbody id="bodyAboutUser" class="text-center">
                                             </tbody>
                                         </table>
                                     </div>
