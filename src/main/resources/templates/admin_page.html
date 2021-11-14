@@ -57,24 +57,6 @@
                                                     <tbody id="bodyAllUsers" class="text-center">
                                                     <th:block th:each="user : ${allUser}">
                                                         <tr>
-                                                            <td class="border-left-0" th:text="${user.id}">Cell 1</td>
-                                                            <td th:text="${user.name}">Cell 2</td>
-                                                            <td th:text="${user.surname}">Cell 3</td>
-                                                            <td th:text="${user.age}">Cell 4</td>
-                                                            <td th:text="${user.email}">Cell 5</td>
-                                                            <td class="border-right-0">
-                                                                <span th:each="role, iStat : ${user.roles}"
-                                                                th:text="!${iStat.last}?${#strings.substring(role.role,5)}+' ':${#strings.substring(role.role,5)}"></span>
-                                                            </td>
-                                                            <div sec:authorize="hasRole('ROLE_ADMIN')">
-                                                                <td>
-                                                                    <button id="btnEditModal" class="btn btn-info" type="button" data-toggle="modal" th:data-target="${'#editModal' + user.getId()}">Edit</button>
-                                                                </td>
-                                                                <td class="border-right-0">
-                                                                    <button id="btnDeleteModal" class="btn btn-danger" type="button" data-toggle="modal" th:data-target="${'#deleteModal' + user.getId()}">Delete</button>
-                                                                </td>
-                                                            </div>
-
                                                             <!--/* Modal Edit */-->
                                                             <div class="modal fade show active" role="dialog" tabindex="-1" th:id="${'editModal' + user.getId()}">
                                                                 <div class="modal-dialog" role="document">
