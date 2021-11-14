@@ -37,7 +37,8 @@ async function loadUsersInTableAllUsers(url, table) {
             user.roles.forEach((role) => {
                 row += "<span>" + role.role.substring(5) + " " + "</span>";
             });
-            row += "<td>" + user.id + "</td>";
+            //row += "<td>" + "<button id='btnEditModal' class='btn btn-info' type='button'>Edit</button>" + user.id + "</td>";
+            row += "<td>" + "<button id='btnEditModal' class='btn btn-info' type='button'>Edit</button>" + "</td>";
             row += "<td class='border-right-0'>" + user.id + "</td>";
             row += "</td></tr>";
         });
