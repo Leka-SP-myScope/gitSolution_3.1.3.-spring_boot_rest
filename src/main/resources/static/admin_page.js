@@ -39,7 +39,7 @@ async function loadUsersInTableAllUsers(url, table) {
             });
             //row += "<td>" + "<button id='btnEditModal' class='btn btn-info' type='button'>Edit</button>" + user.id + "</td>";
             row += "<td>" + "<button id='btnEditModal' class='btn btn-info' type='button'>Edit</button>" + "</td>";
-            row += "<td class='border-right-0'>" + user.id + "</td>";
+            row += "<td class='border-right-0'>" + "<button id='btnDeleteModal' class='btn btn-danger' type='button'>Delete</button>" + "</td>";
             row += "</td></tr>";
         });
         document.getElementById('bodyAllUsers').innerHTML = row;
