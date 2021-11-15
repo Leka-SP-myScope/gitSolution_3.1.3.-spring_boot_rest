@@ -1,5 +1,6 @@
 async function loadUsersInTableAllUsers(url, table) {
     const tableBody = table.querySelector('#bodyAllUsers');
+    const tableBodyNewUser = table.querySelector('#bodyNewUser');
     const tableHead = table.querySelector('#headAllUsers');
 
     try {
@@ -43,6 +44,29 @@ async function loadUsersInTableAllUsers(url, table) {
             row += "</td></tr>";
         });
         document.getElementById('bodyAllUsers').innerHTML = row;
+
+        tableBodyNewUser
+
+        //Populate the body of tableNewUser
+        let rowNewUser = "";
+        data.forEach((user) => {
+            rowNewUser += "<tr>";
+            rowNewUser += "<td class='border-left-0'>" + user.id + "</td>";
+            rowNewUser += "<td>" + user.name + "</td>";
+            rowNewUser += "<td>" + user.surname + "</td>";
+            rowNewUser += "<td>" + user.age + "</td>";
+            rowNewUser += "<td>" + user.email + "</td>";
+            rowNewUser += "<td>";
+            user.roles.forEach((role) => {
+                rowNewUser += "<span>" + role.role.substring(5) + " " + "</span>";
+            });
+            //row += "<td>" + "<button id='btnEditModal' class='btn btn-info' type='button'>Edit</button>" + user.id + "</td>";
+            rowNewUser += "<td>" + "<button id='btnEditModal' class='btn btn-info' type='button'>Edit</button>" + "</td>";
+            rowNewUser += "<td class='border-right-0'>" + "<button id='btnDeleteModal' class='btn btn-danger' type='button'>Delete</button>" + "</td>";
+            rowNewUser += "</td></tr>";
+        });
+        document.getElementById('bodyNewUser').innerHTML = rowNewUser;
+
     } catch (e) {
         console.log(e);
     }
