@@ -49,22 +49,38 @@ async function loadUsersInTableAllUsers(url, table) {
 
         //Populate the body of tableNewUser
         let rowNewUser = "";
-        data.forEach((user) => {
-            rowNewUser += "<tr>";
-            rowNewUser += "<td class='border-left-0'>" + user.id + "</td>";
-            rowNewUser += "<td>" + user.name + "</td>";
-            rowNewUser += "<td>" + user.surname + "</td>";
-            rowNewUser += "<td>" + user.age + "</td>";
-            rowNewUser += "<td>" + user.email + "</td>";
-            rowNewUser += "<td>";
-            user.roles.forEach((role) => {
-                rowNewUser += "<span>" + role.role.substring(5) + " " + "</span>";
-            });
-            //row += "<td>" + "<button id='btnEditModal' class='btn btn-info' type='button'>Edit</button>" + user.id + "</td>";
-            rowNewUser += "<td>" + "<button id='btnEditModal' class='btn btn-info' type='button'>Edit</button>" + "</td>";
-            rowNewUser += "<td class='border-right-0'>" + "<button id='btnDeleteModal' class='btn btn-danger' type='button'>Delete</button>" + "</td>";
-            rowNewUser += "</td></tr>";
-        });
+        rowNewUser += "<tr>";
+        rowNewUser += "<td id='panel-add-new-user'>";
+        rowNewUser += "<div class='col-4 offset-4'>";
+        rowNewUser += "<div class='row'>";
+        rowNewUser += "<div class='col'>";
+
+
+
+        rowNewUser += "<form class='text-center' action='/admin/users' method='post'>" +
+            "<div class='form-group'><label id='labelFirstName' for='name'><strong>First name</strong></label><input class='form-control' type='text' th:value='*{getName()}' id='name' name='name' placeholder='First name' required=''></div>" +
+            "<div class='form-group'><label id='labelLastName' for='surname'><strong>Last name</strong></label><input class='form-control' type='text' th:value='*{getSurname()}' id='surname' name='surname' placeholder='Last name' required=''></div>" +
+            "<div class='form-group'><label id='labelAge' for='age'><strong>Age</strong></label><input class='form-control' type='number' th:value='*{age}' id='age' name='age' placeholder='Age' required=''></div>" +
+            "<div class='form-group'><label id='labelEmail' for='email'><strong>Email</strong></label><input class='form-control' type='email' th:value='*{email}' id='email' placeholder='Email' name='email' required=''></div>" +
+            "<div class='form-group'><label id='password' for='password'><strong>Password</strong></label><input class='form-control' type='password' th:value='*{password}' id='password1' name='password' placeholder='Password' required=''></div>" +
+            "<div class='form-group'><label id='role' for='role'><strong>Role</strong></label><select class='form-control' multiple='multiple' name='rolesNameList' th:value='${user.getRolesNameList()}'>" +
+            // "<option th:each='role : ${listRoles}'\n" +
+            // "th:value='${!role.getRole().startsWith('ROLE_')}? ${role.getRole()}: ${role.getRole().replaceFirst('ROLE_', '')}'\n" +
+            // "th:text='${!role.getRole().startsWith('ROLE_')}? ${role.getRole()}: ${role.getRole().replaceFirst('ROLE_', '')}'>\n" +
+            "</option></select></div>" +
+            "<button class='btn btn-success' type='submit'>Add new user</button>" +
+            "</form>";
+
+
+
+
+
+
+            //rowNewUser += "<div class='col-4 offset-4'>";
+            rowNewUser += "</div></div></div></td></tr>";
+
+
+
         document.getElementById('bodyNewUser').innerHTML = rowNewUser;
 
     } catch (e) {
