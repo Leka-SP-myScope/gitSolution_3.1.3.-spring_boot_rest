@@ -58,12 +58,16 @@ async function loadUsersInTableAllUsers(url, table) {
 
 
         rowNewUser += "<form class='text-center' action='/admin/users' method='post'>" +
-            "<div class='form-group'><label id='labelFirstName' for='name'><strong>First name</strong></label><input class='form-control' type='text' th:value='*{getName()}' id='name' name='name' placeholder='First name' required=''></div>" +
-            "<div class='form-group'><label id='labelLastName' for='surname'><strong>Last name</strong></label><input class='form-control' type='text' th:value='*{getSurname()}' id='surname' name='surname' placeholder='Last name' required=''></div>" +
-            "<div class='form-group'><label id='labelAge' for='age'><strong>Age</strong></label><input class='form-control' type='number' th:value='*{age}' id='age' name='age' placeholder='Age' required=''></div>" +
-            "<div class='form-group'><label id='labelEmail' for='email'><strong>Email</strong></label><input class='form-control' type='email' th:value='*{email}' id='email' placeholder='Email' name='email' required=''></div>" +
-            "<div class='form-group'><label id='password' for='password'><strong>Password</strong></label><input class='form-control' type='password' th:value='*{password}' id='password1' name='password' placeholder='Password' required=''></div>" +
-            "<div class='form-group'><label id='role' for='role'><strong>Role</strong></label><select class='form-control' multiple='multiple' name='rolesNameList' th:value='${user.getRolesNameList()}'>" +
+            "<div class='form-group'><label id='labelFirstName' for='name'><strong>First name</strong></label><input class='form-control' type='text' id='name' name='name' placeholder='First name' required=''></div>" +
+            "<div class='form-group'><label id='labelLastName' for='surname'><strong>Last name</strong></label><input class='form-control' type='text' id='surname' name='surname' placeholder='Last name' required=''></div>" +
+            "<div class='form-group'><label id='labelAge' for='age'><strong>Age</strong></label><input class='form-control' type='number' id='age' name='age' placeholder='Age' required=''></div>" +
+            "<div class='form-group'><label id='labelEmail' for='email'><strong>Email</strong></label><input class='form-control' type='email' id='email' placeholder='Email' name='email' required=''></div>" +
+            "<div class='form-group'><label id='password' for='password'><strong>Password</strong></label><input class='form-control' type='password' id='password1' name='password' placeholder='Password' required=''></div>" +
+            "<div class='form-group'><label id='role' for='role'><strong>Role</strong></label><select class='form-control' multiple='multiple' name='rolesNameList'>" +
+            "<option>ADMIN</option> " +
+            "<option>USER" +
+
+
             // "<option th:each='role : ${listRoles}'\n" +
             // "th:value='${!role.getRole().startsWith('ROLE_')}? ${role.getRole()}: ${role.getRole().replaceFirst('ROLE_', '')}'\n" +
             // "th:text='${!role.getRole().startsWith('ROLE_')}? ${role.getRole()}: ${role.getRole().replaceFirst('ROLE_', '')}'>\n" +
