@@ -64,6 +64,7 @@ async function loadUsersInTableAllUsers(url, table) {
             "<div class='form-group'><label id='labelEmail' for='email'><strong>Email</strong></label><input class='form-control' type='email' id='email' placeholder='Email' name='email' required=''></div>" +
             "<div class='form-group'><label id='password' for='password'><strong>Password</strong></label><input class='form-control' type='password' id='password1' name='password' placeholder='Password' required=''></div>" +
             "<div class='form-group'><label id='role' for='role'><strong>Role</strong></label><select class='form-control' multiple='multiple' name='rolesNameList'>" +
+
             "<option>ADMIN</option> " +
             "<option>USER" +
 
